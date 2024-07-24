@@ -17,13 +17,17 @@ public class CustomerOrder {
     @Id
     @Column(name = "order_id")
     private String orderId;
+
     @Column(name = "order_date",columnDefinition = "DATETIME",nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
+
     @Column(name = "amount",precision = 2)
     private double amount;
-    @Column(name = "status")
+
+    @Column(name = "status",columnDefinition = "TINYINT",nullable = false)
     private boolean status;
+
     @ManyToOne
     @JoinColumn(name = "user",nullable = false)
     private User user;

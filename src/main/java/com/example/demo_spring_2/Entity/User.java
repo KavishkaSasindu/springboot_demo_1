@@ -19,13 +19,17 @@ public class User {
     @Id
     @Column(name="user_id",length = 80,nullable = true)
     private String UserId;
+
     @Column(name = "user_name",length = 100,unique = true)
     private String username;
+
     @Column(name = "password",length = 700,nullable = false)
     private String password;
+
     @Column(name = "address",length = 750,nullable = false)
     private String address;
-    @OneToMany(mappedBy = "user")
+
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
     private Set<CustomerOrder> customerOrders = new HashSet<>();
 
 }
