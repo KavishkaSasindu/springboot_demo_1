@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Blob;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name= "application_user")
 @Getter
@@ -23,7 +25,7 @@ public class User {
     private String password;
     @Column(name = "address",length = 750,nullable = false)
     private String address;
-    @Embedded
-    private FileResource UserAvatar;
+    @OneToMany(mappedBy = "user")
+    private Set<CustomerOrder> customerOrders = new HashSet<>();
 
 }
